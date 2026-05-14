@@ -12,8 +12,8 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // --- CONFIGURACIÓN DE PUERTO PARA RAILWAY ---
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+//var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+//builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 // --- ESCUDO JWT ---
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -79,7 +79,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins(allowedOrigins)
+        policy.WithOrigins("http://localhost:5173", "http://localhost:3000") // Permite ambos por si acaso
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -91,10 +91,12 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c => {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "U-Ride API v1");
-    c.RoutePrefix = string.Empty; // Esto hace que Swagger cargue directo en la URL principal
+
+    // Cambia string.Empty por "swagger"
+    c.RoutePrefix = "swagger";
 });
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 app.UseAuthentication();
 app.UseAuthorization();
