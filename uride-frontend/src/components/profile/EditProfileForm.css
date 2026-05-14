@@ -1,0 +1,558 @@
+/* ── Reset base ─────────────────────────────────────────── */
+.ep-app-shell *,
+.ep-app-shell *::before,
+.ep-app-shell *::after {
+    box-sizing: border-box;
+}
+
+/* ── App shell ──────────────────────────────────────────── */
+.ep-app-shell {
+    display: flex;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR — idéntico a UserProfile
+═══════════════════════════════════════════════════════════ */
+.ep-sidebar {
+    width: 240px;
+    background-color: #162440;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.ep-sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 1.5rem 1.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 1rem;
+}
+
+.ep-sidebar-logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #2ECC71;
+    flex-shrink: 0;
+}
+
+.ep-sidebar-logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+
+.ep-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 0.75rem;
+}
+
+.ep-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ep-nav-item .ti {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.ep-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ep-nav-item--active {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #2ECC71;
+}
+
+.ep-nav-item--active:hover {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ECC71;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN
+═══════════════════════════════════════════════════════════ */
+.ep-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Header */
+.ep-main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.ep-header-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ep-breadcrumb-back {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ep-breadcrumb-back:hover {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.ep-main-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.25px;
+}
+
+.ep-header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ep-header-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #162440;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ep-header-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* Área de contenido */
+.ep-content-area {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2.5rem 2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROFILE CARD (edit mode)
+═══════════════════════════════════════════════════════════ */
+.ep-profile-card {
+    width: 100%;
+    max-width: 440px;
+    background-color: #fff;
+    border-radius: 16px;
+    border: 1px solid #e8eaed;
+    padding: 2rem 2rem 1.75rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botón cancelar (esquina superior derecha) */
+.ep-card-cancel-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ep-card-cancel-btn:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Avatar (modo edición) */
+.ep-avatar-wrapper {
+    position: relative;
+    margin-bottom: 0.875rem;
+}
+
+.ep-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1E3251 0%, #2C3E55 100%);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 3px #e8eaed;
+    transition: opacity 0.2s ease;
+}
+
+.ep-avatar-edit-ring {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #6b7280;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+
+/* Subtítulos de la card */
+.ep-card-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 3px;
+    text-align: center;
+}
+
+.ep-card-university {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0 0 1rem;
+    text-align: center;
+}
+
+/* ── Banner de advertencia ──────────────────────────────── */
+.ep-warning-banner {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 12.5px;
+    color: #92400e;
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+}
+
+.ep-warning-banner .ti {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #d97706;
+}
+
+.ep-warning-banner strong {
+    font-weight: 600;
+}
+
+/* ── Alerta de estado ───────────────────────────────────── */
+.ep-status-alert {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+    flex-wrap: wrap;
+}
+
+.ep-status-alert .ti {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.ep-status-alert--success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.ep-status-alert--error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.ep-countdown-note {
+    width: 100%;
+    font-size: 11.5px;
+    opacity: 0.75;
+    padding-left: 25px;
+}
+
+/* ── Formulario ─────────────────────────────────────────── */
+.ep-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ep-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ep-field-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.ep-field-label-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.ep-field-optional {
+    font-size: 11px;
+    color: #9ca3af;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 2px;
+}
+
+/* ── Input wrapper ──────────────────────────────────────── */
+.ep-field-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ep-field-wrapper:focus-within {
+    border-color: #162440;
+    box-shadow: 0 0 0 3px rgba(22, 36, 64, 0.07);
+}
+
+.ep-field-wrapper--error {
+    border-color: #ef4444;
+}
+
+.ep-field-wrapper--error:focus-within {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+.ep-field-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 16px;
+    color: #9ca3af;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ep-field-input {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
+    font-size: 14px;
+    color: #111827;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.ep-field-input::placeholder {
+    color: #c4c9d4;
+}
+
+/* ── Error de campo ─────────────────────────────────────── */
+.ep-field-error {
+    font-size: 12px;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ep-field-error .ti {
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+/* ── Botones de acción ──────────────────────────────────── */
+.ep-card-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 0.25rem;
+}
+
+.ep-btn-save {
+    width: 100%;
+    padding: 11px 16px;
+    background-color: #2ECC71;
+    color: #fff;
+    font-size: 14.5px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    font-family: inherit;
+}
+
+.ep-btn-save:hover:not(:disabled) {
+    background-color: #27ae60;
+}
+
+.ep-btn-save:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.ep-btn-save:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.ep-btn-save .ti {
+    font-size: 16px;
+}
+
+.ep-btn-cancel {
+    width: 100%;
+    padding: 11px 16px;
+    background-color: transparent;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.ep-btn-cancel:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+    color: #374151;
+}
+
+.ep-btn-cancel .ti {
+    font-size: 16px;
+}
+
+/* ── Spinner ────────────────────────────────────────────── */
+@keyframes ep-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.ep-spin {
+    display: inline-block;
+    animation: ep-spin 0.75s linear infinite;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .ep-sidebar {
+        display: none;
+    }
+
+    .ep-main-header {
+        padding: 1rem 1.25rem;
+    }
+
+    .ep-content-area {
+        padding: 1.5rem 1rem;
+    }
+
+    .ep-profile-card {
+        padding: 1.75rem 1.25rem 1.5rem;
+    }
+}

@@ -1,0 +1,18 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+.vs/
+*.DotSettings.user
+
+## Secretos y configuraciones sensibles
+appsettings.*.json
+!appsettings.json
+appsettings.Development.json
+
+## Herramientas
+packages/
+*.nupkg
